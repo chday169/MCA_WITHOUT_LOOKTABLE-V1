@@ -1,0 +1,9 @@
+
+// 簡單注入代碼
+(function() {
+    const script = document.createElement('script');
+    script.src = '-inject-camera%E5%8F%AF.html';
+    document.head.appendChild(script);
+    alert('相機功能注入中...');
+})();
+            

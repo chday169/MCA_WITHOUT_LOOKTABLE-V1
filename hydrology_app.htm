@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水資源應用 · 水利與水理｜Marching Cubes 無查表法</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', system-ui; background: #e9f2f5; padding: 2rem; }
+        .container { max-width: 1000px; margin: 0 auto; background: white; border-radius: 2rem; padding: 2rem; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        h1 { color: #0077b6; border-left: 5px solid #0077b6; padding-left: 1rem; margin-bottom: 1rem; }
+        .svg-box { background: #f8f9fa; border-radius: 1rem; padding: 1rem; margin: 1.5rem 0; text-align: center; }
+        .footer-nav { margin-top: 2rem; text-align: center; padding-top: 1rem; border-top: 1px solid #ccc; }
+        a { color: #0077b6; text-decoration: none; margin: 0 0.5rem; }
+        .highlight { background: #caf0f8; padding: 1rem; border-radius: 1rem; margin: 1rem 0; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>💧 水資源領域應用：水利工程 + 水理模擬</h1>
+    <p>本專案將「無查表 Marching Cubes」應用於水資源相關之隱式曲面重建，包含河床地形、地下水位面、自由水面線等。</p>
+    
+    <div class="svg-box">
+        <svg width="100%" height="200" viewBox="0 0 600 150" xmlns="http://www.w3.org/2000/svg">
+            <rect width="600" height="150" fill="#d9f0f7" />
+            <path d="M0,100 Q80,80 160,110 T320,90 T480,105 T600,95" stroke="#005f73" fill="none" stroke-width="3" />
+            <path d="M0,130 Q80,115 160,135 T320,120 T480,130 T600,125" stroke="#0a9396" stroke-width="2" fill="none" stroke-dasharray="5,5" />
+            <text x="20" y="45" fill="#023e8a" font-size="14">地表 / 河床斷面</text>
+            <text x="20" y="150" fill="#023e8a" font-size="12">隱式曲面 f(x,y,z)=0 重建地下水飽和面</text>
+            <circle cx="500" cy="40" r="8" fill="#ee9b00" /><text x="510" y="45" fill="#000">水位觀測井</text>
+        </svg>
+        <p><em>圖1：利用隱式曲面擬合河床地形與地下水位面，可輸入水文參數進行水理計算。</em></p>
+    </div>
+
+    <div class="highlight">
+        <strong>🔧 實際應用情境</strong><br>
+        - 洪水氾濫模擬：從 LiDAR 點雲建構 TIN，再以 Marching Cubes 提取水面曲面。<br>
+        - 水庫淤泥體積計算：將水下地形視為隱式函數，精確計算淤積量。<br>
+        - 地下水補注區分析：追蹤等勢面，結合達西定律視覺化流場。
+    </div>
+
+    <h2>📐 水理方程式結合</h2>
+    <p>將水深、流速等物理量編碼為隱式函數 <em>f(x,y,z) = h(x,y) - z</em>，可提取自由水面。配合無查表演算法，不需預先定義複雜水面拓撲，動態更新邊界條件。</p>
+    <div class="svg-box">
+        <svg width="400" height="100" viewBox="0 0 400 100">
+            <rect width="400" height="100" fill="#e0f7fa" />
+            <path d="M0,60 L100,50 L200,70 L300,55 L400,65" stroke="#004d73" fill="none" stroke-width="2" />
+            <text x="150" y="30" font-size="12">等水位線 (隱式提取)</text>
+        </svg>
+    </div>
+
+    <div class="footer-nav">
+        <a href="index.html">🏠 回首頁</a> | <a href="slope_stability_app.html">⛰️ 邊坡穩定應用</a> | <a href="about_me.html">👤 作者</a>
+    </div>
+</div>
+</body>
+</html>

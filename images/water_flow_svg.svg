@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="waterGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4fa8d1;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#0a5d7a;stop-opacity:0.7" />
+    </linearGradient>
+    <linearGradient id="groundGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#b97f44;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6b4c2b;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="800" height="300" fill="#d9f0f7" />
+
+  <!-- 地表 / 河床轮廓（不規則曲線） -->
+  <path d="M0,180 Q80,160 150,190 T300,170 T450,195 T600,165 T800,180" fill="none" stroke="#5a3a1a" stroke-width="3" />
+
+  <!-- 地下水位面（隱式曲面擬合） -->
+  <path d="M0,220 Q100,200 200,215 T400,205 T600,225 T800,210" fill="none" stroke="#0f6b8c" stroke-width="3" stroke-dasharray="6,4" />
+
+  <!-- 填充地下水飽和區 -->
+  <path d="M0,220 Q100,200 200,215 T400,205 T600,225 T800,210 L800,300 L0,300 Z" fill="url(#waterGrad)" opacity="0.5" />
+
+  <!-- 土壤/岩層填充 -->
+  <path d="M0,180 Q80,160 150,190 T300,170 T450,195 T600,165 T800,180 L800,300 L0,300 Z" fill="url(#groundGrad)" opacity="0.3" />
+
+  <!-- 水位觀測井（圓柱+水位線） -->
+  <rect x="620" y="130" width="12" height="100" fill="#888" stroke="#333" stroke-width="2" />
+  <circle cx="626" cy="130" r="8" fill="#aaa" stroke="#333" stroke-width="1.5" />
+  <!-- 井內水位 -->
+  <rect x="622" y="195" width="8" height="35" fill="#2c7da0" opacity="0.8" />
+  <text x="640" y="210" font-size="12" fill="#023e8a">觀測井水位</text>
+
+  <!-- 標註文字 -->
+  <text x="50" y="170" font-size="14" fill="#4a2e1a" font-weight="bold">河床 / 地表</text>
+  <text x="50" y="240" font-size="14" fill="#004d73" font-weight="bold">地下水位面 (隱式曲面 f=0)</text>
+
+  <!-- 箭頭標示滲流方向 -->
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#2c7da0" />
+    </marker>
+  </defs>
+  <line x1="250" y1="210" x2="300" y2="210" stroke="#2c7da0" stroke-width="2" marker-end="url(#arrow)" />
+  <text x="260" y="205" font-size="11" fill="#2c7da0">地下水流向</text>
+
+  <!-- 示意網格與隱式曲面提取 -->
+  <g transform="translate(30, 40)" opacity="0.6">
+    <line x1="0" y1="0" x2="80" y2="0" stroke="#aaa" stroke-width="1" />
+    <line x1="0" y1="0" x2="0" y2="60" stroke="#aaa" stroke-width="1" />
+    <line x1="80" y1="0" x2="80" y2="60" stroke="#aaa" stroke-width="1" />
+    <line x1="0" y1="60" x2="80" y2="60" stroke="#aaa" stroke-width="1" />
+    <text x="20" y="80" font-size="10" fill="#555">體素網格</text>
+  </g>
+</svg>

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350" width="100%" height="100%">
+  <defs>
+    <linearGradient id="soilGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#c08a5c;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#8b5a2b;stop-opacity:0.95" />
+    </linearGradient>
+    <linearGradient id="rockGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#7d6b4f;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#4d3b23;stop-opacity:1" />
+    </linearGradient>
+    <pattern id="rockPattern" patternUnits="userSpaceOnUse" width="20" height="20">
+      <path d="M0,5 L20,15 M5,0 L15,20 M0,15 L20,5" stroke="#5a4a30" stroke-width="0.8" fill="none" />
+    </pattern>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="800" height="350" fill="#f4efe7" />
+
+  <!-- 邊坡地表（左高右低） -->
+  <path d="M0,120 L250,120 L400,180 L550,220 L800,220" fill="none" stroke="#5a3a1a" stroke-width="3" />
+
+  <!-- 土層填充 -->
+  <path d="M0,120 L250,120 L400,180 L550,220 L800,220 L800,350 L0,350 Z" fill="url(#soilGrad)" />
+
+  <!-- 岩盤界面（傾斜） -->
+  <path d="M0,260 L200,260 L400,280 L800,280" fill="none" stroke="#4a3620" stroke-width="3" stroke-dasharray="8,4" />
+  <path d="M0,260 L200,260 L400,280 L800,280 L800,350 L0,350 Z" fill="url(#rockGrad)" opacity="0.7" />
+
+  <!-- 潛在圓弧滑動面（隱式曲面提取） -->
+  <path d="M120,150 Q280,100 500,210" fill="none" stroke="#d45d1f" stroke-width="3" stroke-dasharray="6,3" />
+  <circle cx="310" cy="180" r="5" fill="#d45d1f" />
+  <text x="320" y="175" font-size="12" fill="#b8430e" font-weight="bold">臨界滑動面 (f=0)</text>
+
+  <!-- 滑動塊體標示箭頭 -->
+  <defs>
+    <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#d45d1f" />
+    </marker>
+  </defs>
+  <line x1="220" y1="170" x2="250" y2="200" stroke="#d45d1f" stroke-width="2" marker-end="url(#arrowRed)" />
+  <text x="150" y="165" font-size="12" fill="#d45d1f">潛在滑動方向</text>
+
+  <!-- 標註文字 -->
+  <text x="20" y="140" font-size="14" fill="#4a2e1a" font-weight="bold">表土層</text>
+  <text x="20" y="275" font-size="14" fill="#3d2b1a" font-weight="bold">岩盤 / 穩定地層</text>
+  <text x="580" y="200" font-size="12" fill="#4a2e1a">地滑區</text>
+
+  <!-- 安全係數示意區塊 -->
+  <g transform="translate(600, 40)">
+    <rect x="0" y="0" width="160" height="70" fill="#fff" stroke="#9c6e3e" stroke-width="1.5" rx="8" />
+    <text x="10" y="20" font-size="11" fill="#333" font-weight="bold">⚖️ 極限平衡分析</text>
+    <text x="10" y="38" font-size="10" fill="#555">安全係數 F.S. = 1.25</text>
+    <text x="10" y="54" font-size="10" fill="#555">( Bishop 簡化法 )</text>
+  </g>
+
+  <!-- 網格示意 Marching Cubes -->
+  <g transform="translate(420, 100)" opacity="0.5">
+    <line x1="0" y1="0" x2="60" y2="0" stroke="#888" stroke-width="1" />
+    <line x1="0" y1="0" x2="0" y2="50" stroke="#888" stroke-width="1" />
+    <line x1="60" y1="0" x2="60" y2="50" stroke="#888" stroke-width="1" />
+    <line x1="0" y1="50" x2="60" y2="50" stroke="#888" stroke-width="1" />
+    <text x="10" y="70" font-size="10" fill="#555">體素搜尋</text>
+  </g>
+</svg>
