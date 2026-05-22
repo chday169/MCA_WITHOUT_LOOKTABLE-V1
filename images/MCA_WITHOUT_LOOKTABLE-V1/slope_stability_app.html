@@ -9,7 +9,7 @@
         body { font-family: 'Segoe UI', system-ui; background: #f4efe7; padding: 2rem; }
         .container { max-width: 1000px; margin: 0 auto; background: white; border-radius: 2rem; padding: 2rem; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
         h1 { color: #9c6e3e; border-left: 5px solid #9c6e3e; padding-left: 1rem; margin-bottom: 1rem; }
-        .img-box { background: #fef9e6; border-radius: 1rem; padding: 1rem; margin: 1.5rem 0; text-align: center; }
+        .svg-box { background: #fef9e6; border-radius: 1rem; padding: 1rem; margin: 1.5rem 0; text-align: center; }
         .note { background: #f3e5ab; padding: 1rem; border-radius: 1rem; margin: 1rem 0; }
         .footer-nav { margin-top: 2rem; text-align: center; padding-top: 1rem; border-top: 1px solid #ccc; }
         a { color: #9c6e3e; text-decoration: none; margin: 0 0.5rem; }
@@ -21,7 +21,7 @@
     <h1>⛰️ 邊坡穩定分析：土壤層、岩石邊坡與潛在滑動面</h1>
     <p>透過隱式曲面重建技術，自動從地質鑽孔資料或數值模型提取 <strong>滑動面</strong> 與 <strong>地層界面</strong>，結合極限平衡法（Bishop, Janbu）計算安全係數。</p>
     
-    <div class="img-box">
+    <div class="svg-box">
         <img src="images/slope_surface.png" alt="邊坡穩定示意圖：潛在滑動面與地層界面">
         <p><em>圖2：根據強度參數 (c, φ) 定義隱式函數，自動搜尋臨界滑動面，無需預先設定滑動形狀。</em></p>
     </div>
@@ -35,7 +35,7 @@
 
     <h2>🧪 案例模擬：砂頁岩互層邊坡</h2>
     <p>輸入地層分界點與岩層位態，產生三維隱式曲面，再以程式計算不同水位下之安全係數變化。本方法已初步整合至 Python 原型，並輸出可視化網格。</p>
-    <div class="img-box">
+    <div class="svg-box">
         <img src="images/slope_surface.png" alt="滑動面候選網格" style="max-width:300px;">
         <p><em>滑動面候選網格 (等值面)</em></p>
     </div>
