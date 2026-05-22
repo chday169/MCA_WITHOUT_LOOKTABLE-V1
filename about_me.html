@@ -3,133 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marching Cubes 無查表法 · 幾何重建｜水利 × 邊坡應用</title>
+    <title>關於作者 · 戴清河｜水利技師 × 幾何愛好者</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            background: #f0f4f8;
-            color: #1e2a3a;
-            line-height: 1.5;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+            padding: 2rem;
         }
-        .hero {
-            background: linear-gradient(135deg, #1e4663, #2c7da0);
-            color: white;
-            padding: 3rem 2rem;
-            text-align: center;
+        .card { max-width: 1000px; margin: 0 auto; background: white; border-radius: 2rem; overflow: hidden; box-shadow: 0 20px 35px -10px rgba(0,0,0,0.2); }
+        .header { background: #1e2a3a; color: white; padding: 2rem; text-align: center; }
+        .avatar-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            margin-bottom: 1rem;
         }
-        .hero h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
-        .hero p { max-width: 700px; margin: 0.5rem auto 0; opacity: 0.9; }
-        .container { max-width: 1200px; margin: 2rem auto; padding: 0 1.5rem; }
-        .section-title {
-            font-size: 1.6rem;
-            border-left: 5px solid #2c7da0;
-            padding-left: 1rem;
-            margin: 2rem 0 1rem;
+        .avatar-fallback {
+            display: inline-flex;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: #2c7da0;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            border: 3px solid white;
+            margin-bottom: 1rem;
         }
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin: 1.5rem 0;
-        }
-        .card {
-            background: white;
-            border-radius: 1.5rem;
-            padding: 1.5rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: 0.2s;
-        }
-        .card:hover { transform: translateY(-4px); box-shadow: 0 12px 20px rgba(0,0,0,0.1); }
-        .card h3 { color: #2c7da0; margin-bottom: 0.75rem; }
-        .card p { color: #2d3e50; margin-bottom: 1rem; }
-        .btn {
+        .badge {
             display: inline-block;
             background: #2c7da0;
-            color: white;
-            padding: 0.5rem 1.2rem;
+            padding: 0.2rem 1rem;
             border-radius: 2rem;
-            text-decoration: none;
-            font-weight: 500;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
         }
-        .btn-outline {
-            background: transparent;
-            border: 1px solid #2c7da0;
-            color: #2c7da0;
-        }
-        .footer {
-            text-align: center;
-            padding: 2rem;
-            background: #e2e8f0;
-            margin-top: 2rem;
-            font-size: 0.85rem;
-        }
-        a { text-decoration: none; }
-        hr { margin: 1rem 0; }
-        pre {
-            background: #f1f5f9;
-            padding: 1rem;
-            border-radius: 1rem;
-            overflow-x: auto;
-        }
+        .content { padding: 2rem; }
+        .lang-section { margin-bottom: 2rem; border-bottom: 1px dashed #cbd5e1; padding-bottom: 1.5rem; }
+        .lang-title { font-size: 1.4rem; font-weight: 600; color: #2c7da0; border-left: 4px solid #2c7da0; padding-left: 0.8rem; margin-bottom: 0.8rem; }
+        .highlight { background: #eef2ff; padding: 0.8rem; border-radius: 0.8rem; margin: 1rem 0; }
+        .nav-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin: 1rem; padding: 0.8rem 0; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
+        .nav-links a { background: #2c7da0; color: white; padding: 0.4rem 1rem; border-radius: 2rem; text-decoration: none; }
+        .nav-links a:hover { background: #1e5a73; }
+        .footer { background: #f8fafc; padding: 1rem; text-align: center; }
+        p { margin-bottom: 0.8rem; line-height: 1.6; }
     </style>
 </head>
 <body>
-<div class="hero">
-    <h1>🧊 Geometric Marching Cubes<br>Without Lookup Tables</h1>
-    <p>從 2D 到 3D 隱式曲面重建 · 無查表純幾何推理<br>✨ 新擴充：水資源模擬 + 邊坡穩定分析 ✨</p>
-</div>
-<div class="container">
-    <div class="section-title">📌 核心專案</div>
-    <div class="card-grid">
-        <div class="card">
-            <h3>📄 擴展摘要</h3>
-            <p>幾何演算法推導、數學原理與無查表實作細節。</p>
-            <a href="extended_abstract.html" class="btn">閱讀 →</a>
+<div class="card">
+    <div class="header">
+        <img src="images/0_author.jpg" alt="戴清河照片" class="avatar-img"
+             onerror="this.onerror=null; this.style.display='none'; this.insertAdjacentHTML('afterend', '<div class=\"avatar-fallback\">戴</div>');">
+        <h1>戴清河 · C.H. Day (chday169)</h1>
+        <div class="badge">土木及水利工程技師 (退休) | 數學3D製圖 · 水理與邊坡分析</div>
+    </div>
+    <div class="nav-links">
+        <a href="index.html">🏠 回首頁</a>
+        <a href="image_viewer.html">🖼️ 圖片檢視器</a>
+        <a href="pdf_viewer.html">📑 PDF 論文</a>
+        <a href="extended_abstract.html">📄 擴展摘要</a>
+        <a href="hydrology_app.html">💧 水利應用</a>
+        <a href="slope_stability_app.html">⛰️ 邊坡穩定</a>
+    </div>
+    <div class="content">
+        <div class="lang-section">
+            <div class="lang-title">📖 中文 / 繁體</div>
+            <p>🏗️ <strong>土木及水利工程技師</strong>，執業逾三十年，現已退休。<br>
+            ✨ 退休後全心投入：<strong>數學概念分享</strong>、工程實用程式開發，以及 <strong>3D 數學製圖</strong>。</p>
+            <p>我深信 <strong>視覺化即理解</strong>。在 <strong>水資源</strong>領域，我利用隱式曲面重建河道地形與地下水位面，輔助水理計算；在 <strong>邊坡穩定</strong>方面，則透過 Marching Cubes 生成潛在滑動面，結合極限平衡法評估安全係數。</p>
+            <div class="highlight">
+                🌊 水利應用亮點：不規則三角網(TIN) ＋ 隱式曲面 → 即時水理模擬<br>
+                ⛰️ 邊坡應用亮點：地層界面 + 滑動面自動提取 → 快速穩定性分析
+            </div>
+            <p>本倉儲 <strong>MCA-WITHOUT-LOOKUPTABLE-V1</strong> 正是此理念的延伸 — 無查表、純幾何，適合教學與工程前緣研究。</p>
         </div>
-        <div class="card">
-            <h3>👤 關於作者</h3>
-            <p>土木水利技師 戴清河，退休後專注數學視覺化與工程應用。</p>
-            <a href="about_me.html" class="btn">認識 →</a>
-        </div>
-        <div class="card">
-            <h3>🖼️ 成果圖庫</h3>
-            <p>球體、雙曲面、心形、螺旋管等 10+ 種幾何重建。</p>
-            <a href="image_viewer.html" class="btn">檢視 →</a>
-        </div>
-        <div class="card">
-            <h3>📑 論文 PDF</h3>
-            <p>完整報告與實作文件下載。</p>
-            <a href="pdf_viewer.html" class="btn">開啟 →</a>
+        <div class="lang-section">
+            <div class="lang-title">🇬🇧 English</div>
+            <p>I am a retired <strong>Civil and Hydraulic Engineering Technician</strong> with decades of field experience. My passion lies in visualizing mathematical concepts — especially for <strong>water resources (hydraulics & hydrology)</strong> and <strong>slope stability (soil/rock mechanics)</strong>. This repository demonstrates a lookup‑free Marching Cubes method and its practical extensions.</p>
         </div>
     </div>
-
-    <div class="section-title">🌊 應用領域擴充 (V1 新章節)</div>
-    <div class="card-grid">
-        <div class="card">
-            <h3>💧 水資源・水利與水理</h3>
-            <p>隱式曲面重建河床地形、地下水位面、流速場可視化，輔助洪水模擬與水理分析。</p>
-            <a href="hydrology_app.html" class="btn btn-outline">探索水利應用 →</a>
-        </div>
-        <div class="card">
-            <h3>⛰️ 土壤及岩石邊坡穩定</h3>
-            <p>生成潛在滑動面、地層界面，結合極限平衡法評估安全係數，適用於順向坡、崩塌地。</p>
-            <a href="slope_stability_app.html" class="btn btn-outline">探索邊坡應用 →</a>
-        </div>
-    </div>
-
-    <div class="section-title">🧪 演算法快速體驗</div>
-    <div class="card">
-        <p>Python 實現 (NumPy + Matplotlib) — 即時提取隱式曲面，完全無查表依賴。</p>
-        <pre><code>git clone https://github.com/chday169/MCA_WITHOUT_LOOKTABLE-V1
-cd MCA_WITHOUT_LOOKTABLE-V1
-python mcs_combined_viewer.py</code></pre>
-        <a href="README.md" class="btn">📖 完整 README</a>
-    </div>
-</div>
-<div class="footer">
-    <a href="https://github.com/chday169/MCA_WITHOUT_LOOKTABLE-V1">🔗 GitHub 倉儲 (V1)</a> &nbsp;|&nbsp;
-    保持好奇 · 幾何即理解 · 退休不褪色
+    <div class="footer">📫 歡迎交流水利工程與幾何演算法 | Stay curious, enjoy geometry.</div>
 </div>
 </body>
 </html>
