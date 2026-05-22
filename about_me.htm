@@ -13,23 +13,55 @@
         }
         .card { max-width: 1000px; margin: 0 auto; background: white; border-radius: 2rem; overflow: hidden; box-shadow: 0 20px 35px -10px rgba(0,0,0,0.2); }
         .header { background: #1e2a3a; color: white; padding: 2rem; text-align: center; }
-        .avatar-fallback { display: inline-flex; width: 120px; height: 120px; border-radius: 50%; background: #2c7da0; align-items: center; justify-content: center; font-size: 3rem; border: 3px solid white; margin-bottom: 1rem; }
+        /* 頭像圖片樣式 */
+        .avatar-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            margin-bottom: 1rem;
+        }
+        .avatar-fallback {
+            display: inline-flex;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: #2c7da0;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            border: 3px solid white;
+            margin-bottom: 1rem;
+        }
+        .badge {
+            display: inline-block;
+            background: #2c7da0;
+            padding: 0.2rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
         .content { padding: 2rem; }
         .lang-section { margin-bottom: 2rem; border-bottom: 1px dashed #cbd5e1; padding-bottom: 1.5rem; }
         .lang-title { font-size: 1.4rem; font-weight: 600; color: #2c7da0; border-left: 4px solid #2c7da0; padding-left: 0.8rem; margin-bottom: 0.8rem; }
         .highlight { background: #eef2ff; padding: 0.8rem; border-radius: 0.8rem; margin: 1rem 0; }
         .nav-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin: 1rem; padding: 0.8rem 0; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
         .nav-links a { background: #2c7da0; color: white; padding: 0.4rem 1rem; border-radius: 2rem; text-decoration: none; }
+        .nav-links a:hover { background: #1e5a73; }
         .footer { background: #f8fafc; padding: 1rem; text-align: center; }
         img.svg-placeholder { max-width: 100%; margin: 0.5rem 0; }
+        p { margin-bottom: 0.8rem; line-height: 1.6; }
     </style>
 </head>
 <body>
 <div class="card">
     <div class="header">
-        <div class="avatar-fallback">戴</div>
+        <!-- 作者照片：嘗試載入 images/0_author.jpg，失敗則顯示文字 fallback -->
+        <img src="images/0_author.jpg" alt="戴清河照片" class="avatar-img"
+             onerror="this.onerror=null; this.style.display='none'; this.insertAdjacentHTML('afterend', '<div class=\"avatar-fallback\">戴</div>');">
         <h1>戴清河 · C.H. Day (chday169)</h1>
-        <div class="badge" style="background:#2c7da0; display:inline-block; padding:0.2rem 1rem; border-radius:2rem;">土木及水利工程技師 (退休) | 數學3D製圖 · 水理與邊坡分析</div>
+        <div class="badge">土木及水利工程技師 (退休) | 數學3D製圖 · 水理與邊坡分析</div>
     </div>
     <div class="nav-links">
         <a href="index.html">🏠 回首頁</a>
